@@ -4,13 +4,13 @@ const jwt = require('jsonwebtoken');
 const protectedRoute = (req, res, next) => {
     // Get the token from cookies or headers
     const token = req.cookies.token || req.headers['authorization'];
-     console.log(token)
+    console.log(token)
     if (!token) {
         return res.status(401).json({ message: 'Authorization failed: Token missing' });
     }
 
     // Verify the token
-    jwt.verify(token, 'privatekey', (err, decoded) => {
+    jwt.verify(token, 'Hello', (err, decoded) => {
         if (err) {
             return res.status(401).json({ message: 'Authorization failed: Invalid token' });
         }
